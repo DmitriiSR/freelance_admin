@@ -1,10 +1,18 @@
 <template>
-  <h1>test</h1>
+  <router-view></router-view>
 </template>
 
 <script lang="ts">
+import { useRouter } from 'vue-router'
+
+declare global {
+  interface Window {
+    auth:boolean;
+  }
+}
 
 export default {
+  name: 'App',
   setup() {
     const testF = ():void =>  {
       console.log('my first ts app!')
@@ -12,6 +20,15 @@ export default {
 
     return {
       testF
+    }
+  },
+  created() {
+    const router = useRouter();
+
+    if (!window.auth) {
+      router.push({
+        path: '/login'
+      })
     }
   }
 }

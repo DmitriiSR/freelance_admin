@@ -1,7 +1,16 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import MainPage from "@/views/MainPage.vue";
+import AuthPage from "@/views/AuthPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
-
+  {
+    path: '/',
+    component: MainPage,
+  },
+  {
+    path: '/login',
+    component: AuthPage,
+  }
 ]
 
 const router = createRouter({
