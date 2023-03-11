@@ -2,7 +2,7 @@
   <router-view></router-view>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { useRouter } from 'vue-router'
 
 declare global {
@@ -11,27 +11,15 @@ declare global {
   }
 }
 
-export default {
-  name: 'App',
-  setup() {
-    const testF = ():void =>  {
-      console.log('my first ts app!')
-    }
+const router = useRouter();
+const route = window.location.pathname;
 
-    return {
-      testF
-    }
-  },
-  created() {
-    const router = useRouter();
-
-    if (!window.auth) {
-      router.push({
-        path: '/login'
-      })
-    }
-  }
+if (!window.auth && route !== '/login' && route !== '/registration') {
+  router.push({
+    path: '/login'
+  })
 }
+
 </script>
 
 <style lang="scss">

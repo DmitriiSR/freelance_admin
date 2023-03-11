@@ -1,22 +1,76 @@
 <template>
-  <button :class="props.className ?? ''" @click="testF">
-    <slot></slot>
+  <button class="btn" :class="className" @click.prevent.stop="click">
+    {{ text }}
   </button>
 </template>
 
 <script setup lang="ts">
-import {defineProps} from "vue";
+import {withDefaults, defineEmits, defineProps, computed, onMounted} from "vue";
+import {BtnType} from "@/components/types";
 
-const props = defineProps<{
-  className: string
-}>()
+const props = withDefaults(defineProps<{
+  type: BtnType,
+  text: string,
+  enterPress: boolean
+}>(), {
+  enterPress: false,
+  text: '',
+})
 
-const testF = ():void => {
-  console.log(props);
-}
+const emit = defineEmits<{
+  (e: "clickEvent"): string
+}>();
+
+const className = computed(() => {
+  switch (props.type) {
+    case 'primary':
+      return 'btn-primary'
+    default:
+      return ''
+  }
+})
+
+const click = () => emit('clickEvent');
+
+onMounted(() => {
+  if (props.enterPress) {
+    document.addEventListener('keyup', (e:KeyboardEvent) => {
+      if (e.code === 'Enter') {
+        click()
+      }
+    })
+  }
+})
+
 
 </script>
 
 <style scoped lang="scss">
+.btn {
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
 
+  &.btn-primary {
+    padding: 13px 27px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FEFCFD;
+    background-color: #F24C00;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #FF580C
+    }
+
+    &:active {
+      background-color: #DF4600
+    }
+  }
+
+}
 </style>

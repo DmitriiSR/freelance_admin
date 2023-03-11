@@ -10,6 +10,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     component: AuthPage,
+  },
+  {
+    path: '/registration',
+    component: AuthPage,
+  },
+  {
+    path: '/registration/confirm',
+    component: AuthPage,
   }
 ]
 
