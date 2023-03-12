@@ -15,19 +15,32 @@ import {useRoute} from "vue-router";
 import LoginForm from '@/components/LoginForm.vue';
 import RegistrationForm from '@/components/RegistrationForm.vue'
 import RegistrationConfirm from '@/components/RegistrationConfirm.vue'
-import {ROUTE_LOGIN_PATH, ROUTE_REGISTRATION_PATH, ROUTE_CONFIRM_REGISTRATION_PATH} from "@/router/vars";
+import PasswordRecovery from '@/components/PasswordRecovery.vue'
+import PasswordRecoveryCode from '@/components/PasswordRecoveryCode.vue'
+import NewPasswordCreate from '@/components/NewPasswordCreate.vue'
+import PasswordRecoverySuccess from '@/components/PasswordRecoverySuccess.vue'
+import {ROUTE_LOGIN_PATH, ROUTE_REGISTRATION_PATH, ROUTE_CONFIRM_REGISTRATION_PATH, ROUTE_PASSWORD_RECOVERY_PATH, ROUTE_PASSWORD_RECOVERY_CODE_PATH, ROUTE_PASSWORD_NEW_PATH, ROUTE_PASSWORD_RECOVERY_SUCCESS_PATH} from "@/router/vars";
 
 const route = useRoute();
 
 const renderForm = computed(() => {
-  if (route.path === ROUTE_LOGIN_PATH) {
-    return LoginForm
-  } else if (route.path === ROUTE_REGISTRATION_PATH) {
-    return RegistrationForm
-  } else if (route.path === ROUTE_CONFIRM_REGISTRATION_PATH) {
-    return RegistrationConfirm
-  } else {
-    return false
+  switch (route.path) {
+    case ROUTE_LOGIN_PATH:
+      return LoginForm;
+    case ROUTE_REGISTRATION_PATH:
+      return RegistrationForm;
+    case ROUTE_CONFIRM_REGISTRATION_PATH:
+      return RegistrationConfirm;
+    case ROUTE_PASSWORD_RECOVERY_PATH:
+      return PasswordRecovery;
+    case ROUTE_PASSWORD_RECOVERY_CODE_PATH:
+      return PasswordRecoveryCode
+    case ROUTE_PASSWORD_NEW_PATH:
+      return NewPasswordCreate
+    case ROUTE_PASSWORD_RECOVERY_SUCCESS_PATH:
+      return PasswordRecoverySuccess
+    default:
+      return false
   }
 })
 
@@ -81,6 +94,28 @@ const renderForm = computed(() => {
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.auth-back-btn {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    display: block;
+    width: 8px;
+    height: 12px;
+    background-image: url("../assets/img/arr-back.svg");
+    background-size: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 
 </style>

@@ -37,6 +37,7 @@ p, span {
 // Display utils
 
 .d-block { display: block }
+.d-flex { display: flex }
 
 // Padding utils
 
@@ -57,10 +58,17 @@ p, span {
 .mt-1 { margin-top: 5px }
 .mt-2 { margin-top: 10px }
 .mt-3 { margin-top: 15px }
-.mt-4 { margin-top: 20px }
-.mt-5 { margin-top: 25px }
+.mt-4 { margin-top: 25px }
+.mt-5 { margin-top: 30px }
+.mt-6 { margin-top: 40px }
 
-
+.me-0 { margin-right: 0 }
+.me-1 { margin-right: 5px }
+.me-2 { margin-right: 10px }
+.me-3 { margin-right: 15px }
+.me-4 { margin-right: 25px }
+.me-5 { margin-right: 30px }
+.me-6 { margin-right: 40px }
 
 // Sizes utils
 

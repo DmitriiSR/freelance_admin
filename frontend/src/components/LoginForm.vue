@@ -7,8 +7,8 @@
         <TextInput :label="'Пароль'" :type="'password'" class="login-password"/>
       </form>
       <CustomBtn type="primary" text="Войти" class="form-btn" :enterPress="true" @clickEvent="logIn"/>
-      <router-link :to="ROUTE_REGISTRATION_PATH" class="pt-3 mx-auto">
-        Забыли логин и/или пароль?
+      <router-link :to="ROUTE_PASSWORD_RECOVERY_PATH" class="pt-3 mx-auto">
+        Забыли логин или пароль?
       </router-link>
       <div class="divider">или</div>
       <span>
@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import TextInput from '@/components/UI/TextInput.vue'
 import CustomBtn from '@/components/UI/CustomBtn.vue'
-import {ROUTE_REGISTRATION_PATH} from "@/router/vars";
+import {ROUTE_PASSWORD_RECOVERY_PATH} from "@/router/vars";
 import {useFadeAppear} from "@/hooks";
 
 const input = (val:string) => console.log(val);

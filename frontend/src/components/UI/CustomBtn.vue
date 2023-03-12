@@ -1,5 +1,6 @@
 <template>
   <button class="btn" :class="className" @click.prevent.stop="click">
+    <slot></slot>
     {{ text }}
   </button>
 </template>
@@ -24,7 +25,9 @@ const emit = defineEmits<{
 const className = computed(() => {
   switch (props.type) {
     case 'primary':
-      return 'btn-primary'
+      return 'btn-primary';
+    case 'secondary-icon':
+      return 'btn-secondary-icon'
     default:
       return ''
   }
@@ -69,6 +72,24 @@ onMounted(() => {
 
     &:active {
       background-color: #DF4600
+    }
+  }
+
+  &.btn-secondary-icon {
+    padding: 12px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #476C76;
+    background-color: #B4DADB;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #B4DADB
+    }
+
+    &:active {
+      background-color: #B4DADB
     }
   }
 

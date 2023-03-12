@@ -19,6 +19,22 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: vars.ROUTE_CONFIRM_REGISTRATION_PATH,
     component: AuthPage,
+  },
+  {
+    path: vars.ROUTE_PASSWORD_RECOVERY_PATH,
+    component: AuthPage,
+  },
+  {
+    path: vars.ROUTE_PASSWORD_RECOVERY_CODE_PATH,
+    component: AuthPage,
+  },
+  {
+    path: vars.ROUTE_PASSWORD_NEW_PATH,
+    component: AuthPage,
+  },
+  {
+    path: vars.ROUTE_PASSWORD_RECOVERY_SUCCESS_PATH,
+    component: AuthPage,
   }
 ]
 
