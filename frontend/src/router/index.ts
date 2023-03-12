@@ -1,22 +1,23 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import MainPage from "@/views/MainPage.vue";
 import AuthPage from "@/views/AuthPage.vue";
+import * as vars from './vars'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: vars.ROUTE_MAIN_PATH,
     component: MainPage,
   },
   {
-    path: '/login',
+    path: vars.ROUTE_LOGIN_PATH,
     component: AuthPage,
   },
   {
-    path: '/registration',
+    path: vars.ROUTE_REGISTRATION_PATH,
     component: AuthPage,
   },
   {
-    path: '/registration/confirm',
+    path: vars.ROUTE_CONFIRM_REGISTRATION_PATH,
     component: AuthPage,
   }
 ]

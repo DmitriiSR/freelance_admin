@@ -4,6 +4,7 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
+import {ROUTE_REGISTRATION_PATH, ROUTE_LOGIN_PATH} from "@/router/vars";
 
 declare global {
   interface Window {
@@ -14,9 +15,9 @@ declare global {
 const router = useRouter();
 const route = window.location.pathname;
 
-if (!window.auth && route !== '/login' && route !== '/registration') {
+if (!window.auth && route !== ROUTE_LOGIN_PATH && route !== ROUTE_REGISTRATION_PATH) {
   router.push({
-    path: '/login'
+    path: ROUTE_LOGIN_PATH
   })
 }
 

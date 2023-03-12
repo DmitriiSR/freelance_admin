@@ -2,17 +2,17 @@
   <Transition name="fade">
     <div class="position-absolute position-center-center registration-form__container" v-if="show">
       <h1 class="main-title">Регистрация</h1>
-      <div class="registration-form">
+      <form autocomplete="on" class="registration-form">
         <TextInput :label="'Имя'" :type="'text'" class="registration-form__item"/>
         <TextInput :label="'Email'" :type="'email'" class="registration-form__item"/>
         <TextInput :label="'Пароль'" :type="'password'" class="registration-form__item"/>
         <TextInput :label="'Повторите пароль'" :type="'password'" class="registration-form__item"/>
-      </div>
+      </form>
       <CustomBtn type="primary" text="Зарегистрироваться" class="form-btn" :enterPress="true" @clickEvent="register"/>
       <div class="divider">или</div>
       <span>
         У вас уже есть аккаунт?
-        <router-link to="/login">
+        <router-link :to="ROUTE_LOGIN_PATH">
           Войти
         </router-link>
       </span>
@@ -21,19 +21,19 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
 import TextInput from '@/components/UI/TextInput.vue'
 import CustomBtn from '@/components/UI/CustomBtn.vue'
 import {useRouter} from "vue-router";
+import {ROUTE_LOGIN_PATH, ROUTE_CONFIRM_REGISTRATION_PATH} from "@/router/vars";
+import {useFadeAppear} from "@/hooks";
 
-const show = ref(false);
-setTimeout(() => show.value = true, 10);
+const show = useFadeAppear()
 
 const router = useRouter();
 
 const register = () => {
   router.push({
-    path: '/registration/confirm'
+    path: ROUTE_CONFIRM_REGISTRATION_PATH
   })
 }
 </script>

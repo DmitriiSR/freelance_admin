@@ -15,17 +15,16 @@ import {useRoute} from "vue-router";
 import LoginForm from '@/components/LoginForm.vue';
 import RegistrationForm from '@/components/RegistrationForm.vue'
 import RegistrationConfirm from '@/components/RegistrationConfirm.vue'
+import {ROUTE_LOGIN_PATH, ROUTE_REGISTRATION_PATH, ROUTE_CONFIRM_REGISTRATION_PATH} from "@/router/vars";
 
 const route = useRoute();
 
-console.log(route.path)
-
 const renderForm = computed(() => {
-  if (route.path === '/login') {
+  if (route.path === ROUTE_LOGIN_PATH) {
     return LoginForm
-  } else if (route.path === '/registration') {
+  } else if (route.path === ROUTE_REGISTRATION_PATH) {
     return RegistrationForm
-  } else if (route.path === '/registration/confirm') {
+  } else if (route.path === ROUTE_CONFIRM_REGISTRATION_PATH) {
     return RegistrationConfirm
   } else {
     return false
